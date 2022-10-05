@@ -2,16 +2,40 @@ from cProfile import label
 from tkinter import *
 import menu as m
 from matplotlib.pyplot import grid
+# import calculatePrice as CP
 
 
 window= Tk()
 window.title("Genesis Pizza System")
 window.geometry("800x600")
+
+
 def viewMenu():
     listboxmenu.delete(0,END)
     for i in m.Menu():
         listboxmenu.insert(END,i)
 
+def checkSelectedSize ():
+    bill  = 0
+    if selected.get()==1:
+        selectedSize = "small"
+        bill = 1200
+        print(1200)
+    elif selected.get()==2:
+        selectedSize ="Medium"
+        bill = 1500
+        print(1500)
+    elif selected.get()==3:
+        selectedSize ="Large"
+        bill =2000
+        print(2000)
+    else:
+        print("not available")
+    wantPepproni()
+    return selectedSize,bill
+
+def wantPepproni():
+    print(pepchk_state.get())
 
 lblMenu = Label(window,text="MENU",font=("Helvetica Bold",26))
 lblMenu.grid(row=0,column=1,columnspan=4)
@@ -47,7 +71,7 @@ cheechk_state.set(False)
 cheechk = Checkbutton(window,text="Extra Cheese", var=cheechk_state,font=("Arial",15))
 cheechk.grid(column=0,row=9)
 
-btnPlaceOder= Button(window,text="place your order",font=("Arial",18))
+btnPlaceOder= Button(window,text="place your order",font=("Arial",18),command= checkSelectedSize )
 btnPlaceOder.grid(column=1,row=10)
 
 viewMenu()
