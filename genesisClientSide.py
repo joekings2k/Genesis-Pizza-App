@@ -17,10 +17,24 @@ def viewMenu():
 
 def checkSelectedSize ():
     bill  = 0
+    pepBill =0
     if selected.get()==1:
         selectedSize = "small"
-        bill = 1200
-        print(1200)
+        bill = 1500
+        if pepchk_state.get()== True:
+            pepCheckStatement  = "Yes"
+            pepBill = 200
+            bill = pepBill+bill
+            print(bill)
+            print(pepCheckStatement)                
+        elif pepchk_state.get()== False:
+            pepCheckStatement ="No"
+            bill = 1500
+            print(bill)
+            print(pepCheckStatement)
+        else:
+            pepCheckStatement="out of range"
+
     elif selected.get()==2:
         selectedSize ="Medium"
         bill = 1500
@@ -31,11 +45,9 @@ def checkSelectedSize ():
         print(2000)
     else:
         print("not available")
-    wantPepproni()
     return selectedSize,bill
 
-def wantPepproni():
-    print(pepchk_state.get())
+
 
 lblMenu = Label(window,text="MENU",font=("Helvetica Bold",26))
 lblMenu.grid(row=0,column=1,columnspan=4)
