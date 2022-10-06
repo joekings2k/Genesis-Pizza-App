@@ -9,12 +9,22 @@ window= Tk()
 window.title("Genesis Pizza System")
 window.geometry("800x600")
 
-
-# def addOrder():
+#function to reset all inputs 
+def resetAll():
+    for widgets in window.winfo_children():
+        if isinstance(widgets,Entry):
+            widgets.delete(0,END)
+        if isinstance(widgets,Checkbutton):
+            widgets.deselect()
+        if isinstance(widgets,Radiobutton):
+            selected.set(None)
 
 def addOrders(namee, sizep, add_pep, extra_cheese, total):
     m.insert(namee, sizep, add_pep, extra_cheese, total)
     orderInfo.destroy()
+    #function to rest called here 
+    resetAll()
+    
     
 
 
@@ -33,7 +43,7 @@ def orderInfoDialog ():
 
     cheese = Label(orderInfo,text=f"Cheese:{cheeStatment}",font=("Arial",16))
     cheese.grid(column=0,row=3) 
-    btnConfirm = Button(orderInfo,text="CONFIRM",font=("Arial",16),fg="green")
+    btnConfirm = Button(orderInfo,text="CONFIRM",font=("Arial",16),fg="green",command=lambda:addOrders(entryName.get(),selectedSize,pepStatment,cheeStatment,bill))
     btnConfirm.grid(column=0,row=4)
    
 
