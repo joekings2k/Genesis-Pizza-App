@@ -9,7 +9,17 @@ window= Tk()
 window.title("Genesis Pizza System")
 window.geometry("800x600")
 
+
+# def addOrder():
+
+def addOrders(namee, sizep, add_pep, extra_cheese, total):
+    m.insert(namee, sizep, add_pep, extra_cheese, total)
+    orderInfo.destroy()
+    
+
+
 def orderInfoDialog ():
+    global orderInfo
     orderInfo = Toplevel(window)
     orderInfo.geometry("200x200")
     orderNameLabel = Label(orderInfo,text=f"Name: {entryName.get()}",font=("Arial",16))
