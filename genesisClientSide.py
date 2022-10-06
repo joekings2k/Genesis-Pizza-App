@@ -17,35 +17,38 @@ def viewMenu():
 
 def checkSelectedSize ():
     bill  = 0
-    pepBill =0
     if selected.get()==1:
         selectedSize = "small"
         bill = 1500
-        if pepchk_state.get()== True:
-            pepCheckStatement  = "Yes"
-            pepBill = 200
-            bill = pepBill+bill
-            print(bill)
-            print(pepCheckStatement)                
-        elif pepchk_state.get()== False:
-            pepCheckStatement ="No"
-            bill = 1500
-            print(bill)
-            print(pepCheckStatement)
-        else:
-            pepCheckStatement="out of range"
-
+        print(bill)
     elif selected.get()==2:
         selectedSize ="Medium"
-        bill = 1500
-        print(1500)
+        bill = 2000
     elif selected.get()==3:
         selectedSize ="Large"
-        bill =2000
-        print(2000)
-    else:
-        print("not available")
-    return selectedSize,bill
+        bill =2500
+    
+    if pepchk_state.get() == True:
+        pepStatment = "Yes"
+        print(pepStatment)
+        if selected.get()==1 :
+            bill+=200
+        else:
+            bill+=300
+    elif pepchk_state.get() == False: 
+        pepStatment="No"
+        print(pepStatment)
+
+    if cheechk_state.get()==True:
+        cheeStatment ="Yes"
+        bill+=100
+        
+        print(cheeStatment)
+    elif cheechk_state.get()==False:
+        cheeStatment ="No"
+        print(cheeStatment)
+
+    return selectedSize,bill,pepStatment,cheeStatment
 
 
 
