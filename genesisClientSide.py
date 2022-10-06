@@ -11,9 +11,22 @@ window.geometry("800x600")
 
 def orderInfoDialog ():
     orderInfo = Toplevel(window)
-    orderNameLabel = Label(orderInfo,text="Name : ")
-    orderName = Label(orderInfo,text=f"{entryName.get()}")
-    orderName.grid(column=0,row=0)
+    orderInfo.geometry("200x200")
+    orderNameLabel = Label(orderInfo,text=f"Name: {entryName.get()}",font=("Arial",16))
+    orderNameLabel.grid(column=0,row=0)
+    
+    PizzaSize = Label(orderInfo,text=f"Pizza Size : {selectedSize}",font=("Arial",16))
+    PizzaSize.grid(column=0,row=1)
+
+    Pepperoni = Label(orderInfo,text=f"Pepperoni:{pepStatment}",font=("Arial",16))
+    Pepperoni.grid(column=0,row=2) 
+
+    cheese = Label(orderInfo,text=f"Cheese:{cheeStatment}",font=("Arial",16))
+    cheese.grid(column=0,row=3) 
+    btnConfirm = Button(orderInfo,text="CONFIRM",font=("Arial",16),fg="green")
+    btnConfirm.grid(column=0,row=4)
+   
+
 
 
 def viewMenu():
@@ -72,7 +85,7 @@ listboxmenu.grid(column=1,row=1,rowspan=4,columnspan=6)
 lblName =Label(window,text="Name:",font=("Arial",17))
 lblName.grid(row=6,column=0)
 
-entryName= Entry(window,width=30,font=("Arial",15))
+entryName= Entry(window,width=30,font=("Arial",20))
 entryName.grid(row=6,column=1,columnspan=4)
 
 lblPizza= Label(window,text="PIZZA",font=("Arial",14))
@@ -102,9 +115,4 @@ btnPlaceOder= Button(window,text="place your order",font=("Arial",18),command= c
 btnPlaceOder.grid(column=1,row=10)
 
 viewMenu()
-
-
-
-
-
 window.mainloop()
