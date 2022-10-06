@@ -9,6 +9,12 @@ window= Tk()
 window.title("Genesis Pizza System")
 window.geometry("800x600")
 
+def orderInfoDialog ():
+    orderInfo = Toplevel(window)
+    orderNameLabel = Label(orderInfo,text="Name : ")
+    orderName = Label(orderInfo,text=f"{entryName.get()}")
+    orderName.grid(column=0,row=0)
+
 
 def viewMenu():
     listboxmenu.delete(0,END)
@@ -16,9 +22,13 @@ def viewMenu():
         listboxmenu.insert(END,i)
 
 def checkSelectedSize ():
+    global bill
+    global selectedSize
+    global pepStatment
+    global cheeStatment
     bill  = 0
     if selected.get()==1:
-        selectedSize = "small"
+        selectedSize = "Small"
         bill = 1500
         print(bill)
     elif selected.get()==2:
@@ -47,8 +57,10 @@ def checkSelectedSize ():
     elif cheechk_state.get()==False:
         cheeStatment ="No"
         print(cheeStatment)
+    orderInfoDialog()
 
     return selectedSize,bill,pepStatment,cheeStatment
+    
 
 
 
