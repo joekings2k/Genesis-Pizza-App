@@ -24,6 +24,14 @@ def update(id, pizzasze, pep, chee, total):
     conn.commit()
     conn.close()
 
+def view_all():
+    conn = sql3.connect("GENSISPIZZA.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM orders")
+    rows = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return rows
 
 if file_exists:
     pass
