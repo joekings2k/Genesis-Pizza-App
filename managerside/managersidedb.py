@@ -17,12 +17,20 @@ def insert(namee, sizep, add_pep, extra_cheese, total):
     conn.commit()
     conn.close()
 
-def update(id, pizzasze, pep, chee, total):
+def update(id, pizzasize, pep, chee, total):
     conn = sql3.connect("GENSISPIZZA.db")
     cursor = conn.cursor()
-    cursor.execute(f'UPDATE orders SET PIZZASIZE={pizzasze}, PEPPERONI={pep}, CHEESE={chee}, TOTAL={total}, WHERE ID={id}')
+    cursor.execute(f'UPDATE orders SET PIZZASIZE={pizzasize}, PEPPERONI={pep}, CHEESE={chee}, TOTAL={total} WHERE ID={id}')
     conn.commit()
     conn.close()
+
+def updateModi(id,pizzasize, pep,chee,total):
+    conn = sql3.connect('GENSISPIZZA.db') # Create the db 
+    cursor = conn.cursor() # Create a cursor
+    cursor.execute('UPDATE orders SET PIZZASIZE=?, PEPPERONI=?,CHEESE=?,TOTAL =? WHERE id=?', (pizzasize,pep,chee,total, id))
+    conn.commit()
+    conn.close()
+
 
 def view_all():
     conn = sql3.connect("GENSISPIZZA.db")
