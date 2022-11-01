@@ -41,6 +41,23 @@ def view_all():
     conn.close()
     return rows
 
+def delete(id):
+    conn = sql3.connect('GENSISPIZZA.db') # Create the db 
+    cursor = conn.cursor() # Create a cursor
+    cursor.execute('DELETE FROM orders WHERE id=?', (id,))
+    conn.commit()
+    conn.close()
+
+
+def sumTotal ():
+    conn=sql3.connect("GENSISPIZZA.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT SUM(TOTAL) FROM orders")
+    rows = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return rows
+
 if file_exists:
     pass
 else:
